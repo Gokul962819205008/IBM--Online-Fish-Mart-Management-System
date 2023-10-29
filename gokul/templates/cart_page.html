@@ -1,0 +1,84 @@
+{% extends 'header_main.html' %}
+
+{% block head %}
+<title>user_cart page</title>
+<style>
+img{
+    margin-left:30px;
+    width:300px;
+    height:300px;
+    margin-bottom:30px;
+    border-radius:5px;
+
+}
+.prod{
+  margin-top:110px;
+}
+.div1{
+   background-color:black;
+   color: white;
+}
+.seller p{
+    margin-left:120px;
+}
+#foter{
+    background-color: black;
+    color: white;
+    height: 42%;
+    margin-top:30px;
+}
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+   <h1>  </h1>
+    <hr>
+</div>
+<!--    {{image}}-->
+{% for (x,y) in total %}
+<div class="container mt-5  row mx-auto">
+    <div class="row mt-5 div1">
+    <div class="col-6 seller">
+    <p class="btn-primary col-3 text-center mt-5 rounded-3  seller ">BEST SELLER</p>
+
+
+        {% set a = x.image %}
+        {% set b= encode(a) %}
+        {% set img = b.decode('UTF-8') %}
+        <img src="data:image/png;charset-utf;base64,{{img}} ">
+    </div>
+    <div class="col-6 prod">
+       <h3> Product : &nbsp {{x.name}}</h3>
+        <h3>$<del>{{x.price}}</del></h3>
+        <h3>Flat {{x.offers}} OFF%</h3>
+         <h3>Now just ${{x.offer_price}} </h3>
+               <br>
+               <br>
+               <br>
+        <form method = "POST" action="/cart_del">
+        <input type="hidden" name = "id" value="{{y.id}}">
+        <button class="btn btn-danger col-5 mx-3">remove from cart</button>
+            </form>
+     </div>
+</div>
+    <br>
+</div>
+{% endfor %}
+
+<div class="container col-10 mx-auto " id="foter">
+    <div class="col-8 mx-auto pt-5">
+    <h2 class="mb-4">Price Details</h2>
+        <h4 mt-2>Price ({{length}} items):&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp $<del>{{price}}</del></h4>
+
+    <h4 class="mt-2">Discount : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp -15%</h4>
+
+    <h3 class="my-4">Total Amount : &nbsp &nbsp &nbsp &nbsp &nbsp  $ {{offerprice}}</h3>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

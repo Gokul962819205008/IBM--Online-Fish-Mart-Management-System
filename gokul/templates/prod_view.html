@@ -1,0 +1,51 @@
+{% extends 'header_main.html' %}
+
+{% block head %}
+<title>upload page</title>
+<style>
+img {
+    width: 75%;
+
+    background-color:black;
+    color : black;
+    border : 1px solid black;
+}
+.prod{
+margin-top: 100px;
+}
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container col-12 row mx-auto">
+
+<div class=" col-6">
+    {% set a = prod.image %}
+    {% set b= encode(a) %}
+    {% set img = b.decode('UTF-8') %}
+
+    <img src="data:image/png;charset-utf;base64,{{img}} ">
+</div>
+<div class="container  col-6 prod">
+    <h4> PRODUCT : {{ prod.name }}</h4>
+    <h4><del>{{ prod.price }}</del> WITH &nbsp &nbsp{{ prod.offers }}% OFF</h4>
+    <h4>NOW JUST  {{ prod.offer_price }}</h4>
+   <br>
+    <form method="POST" action ="/cart">
+        <input type="hidden" name="id" value="{{prod.id}}">
+<!--        <input type="hidden" name="cust_id" value="{{cust_id}}">-->
+<!--        <input type="hidden" name="image" value="{{prod.img_name}}">-->
+<!--        <input type="hidden" name="pname" value="{{prod.name}}">-->
+<!--        <input type="hidden" name="price" value="{{prod.price}}">-->
+<!--        <input type="hidden" name="offer" value="{{prod.offers}}">-->
+<!--        <input type="hidden" name="offer_price" value="{{prod.offer_price}}">-->
+        <button class="btn btn-danger mt-6">ADD TO CART</button>
+    </form>
+</div>
+</div>
+
+
+
+
+{% endblock %}

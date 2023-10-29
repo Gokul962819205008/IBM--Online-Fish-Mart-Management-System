@@ -1,0 +1,43 @@
+{% extends 'admin_header.html' %}
+
+{% block head %}
+<title>Home</title> 
+{% endblock %}
+
+{% block body %}
+<div class="container mb-5 text-center">
+    <h1 class="display-3">Customer Data</h1>
+    <hr>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Date</th>
+        <th>delete</th>
+    </tr>
+{% for cust in customer %}
+    <tr>
+        <td>{{ cust.id }}</td>
+        <td>{{ cust.name }}</td>
+        <td>{{ cust.dob }}</td>
+        <td>{{ cust.phone }}</td>
+        <td>{{ cust.email }}</td>
+        <td>{{ cust.password }}</td>
+        <td>{{ cust.date_joined }}</td>
+        <td>
+            <form action="/delete_customer" method="POST">
+                <input type="hidden" value="{{cust.id}}" name = "id">
+                <button class="btn btn-danger">delete</button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}     
+
+</table>
+
+{% endblock %}

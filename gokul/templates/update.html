@@ -1,0 +1,61 @@
+{% extends 'admin_header.html' %}
+
+{% block head %}
+<title>Home</title> 
+{% endblock %}
+
+{% block body %}
+<div class="container mb-5 text-center">
+    <h1 class="display-3">update form</h1>
+    <hr>
+</div>
+
+<div class="container col-6 mt-5">
+<form action="/update" method="POST">
+    <table class="table table-borderless ">
+        <tr>
+            <td>
+    <label>Product name</label>
+                </td>
+            <td>
+    <input type="text" name="p_name" value="{{datas.name}}">
+            </td>
+    </tr>
+        <tr>
+            <td>
+    <label>price</label>
+            </td>
+            <td>
+    <input type="text" name="price" value="{{datas.price}}">
+            </td>
+    </tr>
+        <tr>
+            <td>
+    <label>Offer</label>
+            </td>
+            <td>
+    <input type="text" name="offer" value="{{datas.offers}}">
+            </td>
+    </tr>
+        <tr>
+            <td>
+    <label>Offer price</label>
+            </td>
+            <td>
+    <input type="text" name="offer_price" value="{{datas.offer_price}}">
+            </td>
+    </tr>
+<input type="hidden" name = "id" value="{{datas.id}}" >
+
+
+    </table>
+<div class="container col-2 mt-5">
+    <button class="btn btn-primary ps-6">submit</button>
+
+</div>
+</form>
+</div>
+
+{{value}}
+
+{% endblock %}

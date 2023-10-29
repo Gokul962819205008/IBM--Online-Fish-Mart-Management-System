@@ -1,0 +1,75 @@
+{% extends 'admin_header.html' %}
+<style>
+    #buton{
+    text-align:center;
+    margin-left:30px;
+    }
+</style>
+{% block head %}
+<title>upload page</title> 
+{% endblock %}
+
+{% block body %}
+
+    <div class="container col-12">
+        <h1 style="text-align: center">UPLOAD PAGE</h1>
+        <hr>
+    </div>
+<div class="container col-6 mt-5">
+    <form action="/img" method="post" enctype="multipart/form-data" >
+
+
+      <table class="table table-borderless ">
+          <tr>
+        <input type="file" class="form-control" name="img">
+          </tr>
+
+         <tr>
+             <td>
+        <label>Product name</label>
+             </td>
+             <td>
+        <input type="text" name="p_name">
+             </td>
+
+        </tr>
+        <tr>
+            <td>
+        <label>price</label>
+            </td>
+            <td>
+        <input type="text" name="price">
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+        <label>Offer</label>
+            </td>
+            <td>
+        <input type="text" name="offer">
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+        <label>Offer price</label>
+            </td>
+            <td>
+        <input type="text" name="offer_price">
+            </td>
+
+        </tr>
+
+      </table>
+
+<div class="container col-2 mt-5">
+    <button name = "submit" class="btn btn-primary " id="buton" >submit</button>
+</div>
+
+    </form>
+    {{value}}
+</div>
+
+
+{% endblock %}

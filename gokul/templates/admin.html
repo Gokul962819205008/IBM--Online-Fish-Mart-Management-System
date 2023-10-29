@@ -1,0 +1,74 @@
+{% extends 'admin_header.html' %}
+
+{% block head %}
+<title>Home</title> 
+<style>
+    img {
+        width: 150px;
+        height: 100px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mb-5 text-center">
+    <h1 class="display-3">Welcome Admin</h1>
+    <hr>
+</div>
+
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>id</th>
+        <th>image type</th>
+        <th>name</th>
+        <th>price</th>
+        <th>offer</th>
+        <th>offer price</th>
+        <th>date</th>
+        <th>image</th>
+        <th>update</th>
+        <th>delete</th>
+        
+    </tr>
+{% for post in posts %}
+        <tr> <td>{{ post.id }}</td>
+        {% if post.img_name %}
+            <td>{{ post.img_type }}</td>
+            <td>{{post.name}}</td>
+            <td>{{post.price}}</td>
+            <td>{{post.offers}}</td>
+            <td>{{post.offer_price}}</td>
+            <td>{{post.date_joined}}</td>
+            {% set a = post.image %}
+
+            {% set b= encode(a) %}
+
+            {% set img = b.decode('UTF-8') %}
+            <td>
+            <img src="data:image/png;charset-utf;base64,{{img}} ">
+            </td>
+            <td>
+                <form action="/updateform" method="POST">
+                    <input type="hidden" value="{{post.id}}" name = "id">
+                    <button class="btn btn-primary">update</button>
+                </form>
+            </td>
+            <td>
+                <form action="/deleteform" method="POST">
+                    <input type="hidden" value="{{post.id}}" name = "id">
+                    <button class="btn btn-danger">delete</button>
+                </form>
+            </td>
+
+            
+        {% else %}
+            <td>By: N/A</td>
+        {% endif %}
+            </tr>
+{% endfor%}
+
+</table>
+
+
+{% endblock %}

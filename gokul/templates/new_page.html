@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #bttn{
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/new" method="POST">
+    <div class="container bg-secondary my-5"  id = "bttn">
+        <h1 class="text-md-center">Registration page</h1>
+
+        <div class="w-70 bg-primary pb-5" >
+        <!-- <div class="border mt-5 text-md-center rounded"> -->
+            <div class="row mt-5 ms-5 pt-5">
+                <label class="col-2 h5">Name</label>
+                <input type="text"  class="col-7" name="name">
+            </div>
+            <div class="row mt-5 ms-5">
+                <label class="col-2 h5">Email</label>
+                <input type="email"  class="col-7" name = "email">
+            </div>
+            <div class="text-center mt-4">
+            <button class="col-2 btn btn-success text-md-center rounded" name="submit"  >Submit</button>
+        </div>
+       </div>
+    </div>
+</form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

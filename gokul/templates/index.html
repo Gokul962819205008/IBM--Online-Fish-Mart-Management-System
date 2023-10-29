@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Admin page</title>
+<style>
+    img {
+        width: 150px;
+        height: 100px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+  <div class="container mb-5 text-center">
+    <h1 class="display-3">Welcome Admin</h1>
+  </div>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>id</th>
+        <th>type</th>
+        <th>price</th>
+        <th>image</th>
+    </tr>
+{% for post in posts %}
+        <tr> <td>{{ post.id }}</td>
+        {% if post.name %}
+            <td>{{ post.mimetype }}</td>
+            <td>{{post.price}}</td>
+            {% set a = post.image %}
+
+            {% set b= encode(a) %}
+
+            {% set img = b.decode('UTF-8') %}
+            <td>
+            <img src="data:image/png;charset-utf;base64,{{img}} ">
+            </td>
+            <td>
+                <form action="/updateform" method="POST">
+                    <input type="hidden" value="{{post.id}}" name = "id">
+                    <button class="btn btn-danger">update</button>
+                </form>
+            </td>
+        {% else %}
+            <td>By: N/A</td>
+        {% endif %}
+            </tr>
+        <!-- <p>{{ post.content }}</p>
+        <a href='/posts/delete/{{post.id}}'>Delete</a>
+        <a href='/posts/edit/{{post.id}}'>Edit</a>
+        <hr> -->
+{% endfor%}
+</table>
+{% endblock %}
